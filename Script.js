@@ -23,10 +23,23 @@ var firebaseRef = firebase.database().ref("highscores"); //CREATE REF AND PINPOI
 window.addEventListener('keydown', keyListener);
 window.addEventListener('keyup', resetSizeListener);
 canvas.addEventListener('touchstart', touchEvent);
+canvas.addEventListener('touchend', touchEventReset);
+
 
 // TOUCH EVENTS
-function touchEvent(event) {
-		playerSquare.jump();
+function touchEvent(ev) {
+		evX = ev.targetTouches[0].pageX - canvas.offsetLeft;
+		if (evX < 300) {
+			playerSquare.jump();
+		} else if (evX > 300 && playerSquare.height === 40) {
+			playerSquare.crouch();
+		}
+};
+
+function touchEventReset(ev) {
+		if (playerSquare.height === 20) {
+			playerSquare.resetSize();
+		}
 };
 
 // The Penguin variables
