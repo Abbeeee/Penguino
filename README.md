@@ -1,2 +1,2 @@
 # Penguino
-A infinite runner game, kind of. It was part of a school group project.
+A infinite runner game, kind of. Part of a school group project.
