@@ -25,10 +25,11 @@ window.addEventListener('keyup', resetSizeListener);
 canvas.addEventListener('touchstart', touchEvent);
 canvas.addEventListener('touchend', touchEventReset);
 
-
 // TOUCH EVENTS
 function touchEvent(ev) {
 		evX = ev.targetTouches[0].pageX - canvas.offsetLeft;
+		ev.preventDefault();
+		passive: false;
 		if (evX < 300) {
 			playerSquare.jump();
 		} else if (evX > 300 && playerSquare.height === 40) {
@@ -189,25 +190,28 @@ function gameOver() {
 	// CHECKS IF PLACEMENT INSIDE HIGHSCORE = HIGHSCORE
 	if (placement < numberOfHighscores) {
 		context.font = '50px Roboto';
+		context.textAlign = "center";
 		context.fillStyle = '#5b4003';
-		context.fillText('NEW HIGHSCORE', 90, 70);
+		context.fillText('NEW HIGHSCORE', 300, 70);
 
 		context.font = '30px Roboto';
+		context.textAlign = "center";
 		context.fillStyle = '#5b4003';
-		context.fillText('YOU ARE NR: ' + placement, 190, 290);
+		context.fillText('YOU ARE NR: ' + placement, 300, 290);
 	}
 
 	// GAME OVER TEXT
 	else {
 		context.font = 'bold 50px Roboto';
 		context.fillStyle = '#5b4003';
-		context.fillText('GAME OVER', 160, 70);
+		context.textAlign = "center";
+		context.fillText('GAME OVER', 300, 70);
 	}
 
 	// DISPLAYS SCORE
 	context.font = '20px Roboto';
 	context.fillStyle = '#5b4003';
-	context.fillText('YOUR SCORE: ' + score, 220, 100);
+	context.fillText('YOUR SCORE: ' + score, 300, 100);
 
 	//CREATE RESTART-BUTTON
 	var body = document.getElementById('body');
@@ -424,6 +428,7 @@ function gameLoop() {
 	// DISPLAYS SCORE
 	context.font = '18px Roboto';
 	context.fillStyle = '#000';
+	context.textAlign = 'start';
 	context.fillText('SCORE: '+ score, 5, 23);
 
 	// Increase the speed at score 750 and 1000
