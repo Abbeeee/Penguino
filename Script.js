@@ -226,12 +226,12 @@ function gameOver() {
 	restartButton.addEventListener('click', restart);
 
 	// // SAVE AS OBJECT AND PUSH TO FIREBASE
-	// var scoreObject = {
-	// 	Name: name,
-	// 	Score: score
-	// }
-	// firebaseRef.push(scoreObject);
-  ////////////////////////////////////////////////////////////////////////////////////////// uncomment above
+	var scoreObject = {
+		Name: name,
+		Score: score
+	}
+	firebaseRef.push(scoreObject);
+
 	// REFRESH SCOREBOARD
 	getScore();
 };
